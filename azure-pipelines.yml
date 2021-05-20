@@ -1,0 +1,47 @@
+# Node.js
+# Build a general Node.js project with npm.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    echo 'start npm install'
+    npm install
+    echo 'end npm install'
+
+- script: |
+    npm run gruntify
+  displayName: 'npm run gruntify'
+
+- script: |
+    npm run pack
+  displayName: 'npm run pack'
+
+- script: |
+    npm run dist
+  displayName: 'npm run dist'
+
+- script: |
+    dir dist
+  displayName: 'dir dist'
+
+- script: |
+    cp 'dist\\gameboy-emulator Setup 1.0.0.exe' '$(Build.ArtifactStagingDirectory)\\gameboy-emulator Setup 1.0.0.exe'
+  displayName: 'copy to artifact staging directory'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'

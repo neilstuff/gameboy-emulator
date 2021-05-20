@@ -1,0 +1,6 @@
+*.sw*
+node_modules
+dist
+assets/images/Thumbs.db
+assets/javascripts/gameboy.js
+assets/javascripts/gameboy.js

@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf8"/>
+    <title>Gameboy emulator</title>
+    <link rel="stylesheet" href="assets/styles/styles.css" type="text/css"/>
+</head>
+<body>
+
+<header>
+    <h1>Gameboy Emulator</h1>
+</header>
+
+<div id="container">
+
+    <div class="canvas-container">
+        <canvas id="canvas"></canvas>
+    </div>
+
+    <div class="rom-section">
+
+        <div id="dropzone">
+            <p>
+                Cartridge
+            </p>
+        </div>
+    </div>
+
+    <p id="error" class="hide"></p>
+    
+    <div style="position:absolute; top:5px; right:10px;">
+        <p class="commands">
+            <button onclick="g.pause(true);">Pause</button>
+            <button onclick="g.pause(false);">Run</button>
+        </p>
+    </div>    
+
+    <div class="commands"  style="position:absolute; bottom:10px; right:10px;">
+
+        <label>
+           Zoom
+            <select id="screen-zoom" onchange="g.setScreenZoom(this.value);">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+        </label>
+    </div>
+
+    <div id="keyboard-info" style="position:absolute; bottom:10px; left:10px;">
+        <table>
+        <thead>
+            <tr><th>Pad</th><th>Keys</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>A</td><td>G</td></tr>
+            <tr><td>B</td><td>B</td></tr>
+            <tr><td>START</td><td>H</td></tr>
+            <tr><td>SELECT</td><td>N</td></tr>
+            <tr><td>Movement</td><td>Arrow Keys</td></tr>
+        </tbody>
+        </table>
+    </div>
+
+    <div style="position:absolute; top:5px; left:5px; color:white; font-size:10px;">
+        <span id="status"></span> <span id="game-name"></span>
+    </div>
+
+</div>
+
+<script type="text/javascript" src="assets/javascripts/gameboy.js"></script>
+
+<script type="text/javascript">
+// configuration
+var opts = {
+    romReaders: [
+        new GameboyJS.RomDropFileReader(document.getElementById('dropzone'))
+    ]
+};
+var g = new GameboyJS.Gameboy(document.getElementById('canvas'), opts);
+g.setSoundEnabled(false);
+g.setScreenZoom(document.getElementById('screen-zoom').value);
+</script>
+
+</body>
+</html>
