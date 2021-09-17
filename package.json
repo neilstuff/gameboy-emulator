@@ -1,49 +1,50 @@
 {
-  "name": "gameboy-emulator",
-  "version": "1.0.0",
-  "description": "Gameboy Emulator",
-  "main": "main.js",
-  "scripts": {
-    "gruntify": "grunt",
-    "pack": "electron-builder --dir",
-    "dist": "electron-builder --publish never",
-    "start": "electron ."
-  },
-  "build": {
-    "win": {
-      "target": [
-        {
-          "target": "nsis",
-          "arch": [
-            "x64",
-            "ia32"
-          ]
+    "name": "gameboy-emulator",
+    "version": "1.0.0",
+    "description": "Gameboy Emulator",
+    "main": "main.js",
+    "scripts": {
+        "gruntify": "grunt",
+        "pack": "electron-builder --dir",
+        "dist": "electron-builder --publish never",
+        "start": "electron ."
+    },
+    "build": {
+        "win": {
+            "target": [
+                {
+                    "target": "nsis",
+                    "arch": [
+                        "x64",
+                        "ia32"
+                    ]
+                }
+            ]
         }
-      ]
-    }
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/thesourorange/gameboy-emulator.git"
-  },
-  "keywords": [
-    "Electron"
-  ],
-  "author": "GitHub",
-  "license": "CC0-1.0",
-  "devDependencies": {
-    "electron": "^8.2.3",
-    "electron-builder": "^22.5.1",
-    "grunt": "^0.4.5",
-    "grunt-cli": "^0.1.13",
-    "grunt-contrib-concat": "^0.5.1",
-    "grunt-contrib-uglify": "^4.0.1"
-  },
-  "dependencies": {
-    "electron-disable-file-drop": "^1.0.2"
-  },
-  "bugs": {
-    "url": "https://github.com/thesourorange/gameboy-emulator/issues"
-  },
-  "homepage": "https://github.com/thesourorange/gameboy-emulator#readme"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/thesourorange/gameboy-emulator.git"
+    },
+    "keywords": [
+        "Electron"
+    ],
+    "author": "GitHub",
+    "license": "CC0-1.0",
+    "devDependencies": {
+        "electron": "^14.0.1",
+        "electron-builder": "^22.11.7",
+        "node": "^16.9.1",
+        "grunt": "^0.4.5",
+        "grunt-cli": "^0.1.13",
+        "grunt-contrib-concat": "^0.5.1",
+        "grunt-contrib-uglify": "^4.0.1"
+    },
+    "dependencies": {
+        "electron-disable-file-drop": "^1.0.2"
+    },
+    "bugs": {
+        "url": "https://github.com/thesourorange/gameboy-emulator/issues"
+    },
+    "homepage": "https://github.com/thesourorange/gameboy-emulator#readme"
 }
