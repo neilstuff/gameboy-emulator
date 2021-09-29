@@ -18,11 +18,7 @@ function createWindow() {
         mainWindow.webContents.openDevTools();
     }
 
-    mainWindow.loadURL(url.format({
-        pathname: path.join(__dirname, 'index.html'),
-        protocol: 'file:',
-        slashes: true
-    }))
+    mainWindow.loadURL(`file:///${path.join(__dirname, 'index.html')}`);
 
     mainWindow.on('closed', () => {
         mainWindow = null
